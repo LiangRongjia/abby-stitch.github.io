@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import MyPoints from './MyPoints/MyPoints'
+import MyPoints from './MyPoints/MyPoints.jsx'
 
 export default function ButtonAppBar() {
 
@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
 
   return (
     <div ref={appRef} className='app'>
-      <div className='app--menu-button'>菜单</div>
+      <div className='menu-button'>菜单</div>
       <MyPoints />
     </div>
   );

@@ -1,0 +1,7 @@
+.class-grades>select {
+    font-size: 14px;
+    padding: 2px;
+    width: stretch;
+    text-align: center;
+    background-color: transparent;
+}
