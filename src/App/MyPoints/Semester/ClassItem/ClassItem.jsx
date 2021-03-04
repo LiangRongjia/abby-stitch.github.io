@@ -12,7 +12,9 @@ export default function ClassItem(props) {
           ref={selectRef}
           onChange={() => props.setGrades(props.name, selectRef.current.value)}
           value={props.grades}>
-          {props.gradesList.map(item => <option key={item} value={item}>{item}</option>)}
+          {props.gradesList.map(item =>
+            <option key={item} value={item}>{item}</option>
+          )}
         </select>
       </span>
       <span className="class-points">{props.points}</span>
@@ -20,8 +22,8 @@ export default function ClassItem(props) {
         <input type="checkbox"
           credits={props.credits}
           points={props.points}
-          onChange={() => (props.checkClassItem(props.name))} 
-          checked={props.checked}/>
+          onChange={() => (props.checkClassItem(props.name))}
+          checked={props.checked} />
       </span>
     </li>
   )

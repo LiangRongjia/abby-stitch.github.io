@@ -60,9 +60,27 @@ const db = {
     ]
 }
 
+/**
+ * @param {{
+ *  semesters: { ID: string, order: number, name: string } [],
+ *  classes: { semester: string, grades: string, credits: number, name: string } [],
+ *  grades: { name: string, points: number } []
+ * }} db 
+ */
+const toViewData = db => db.semesters.map(semester => ({
+    title: semester.name,
+    classes: db.classes.filter(classItem => classItem.semester === semester.ID).map(classItem => ({
+        name: classItem.name,
+        credits: classItem.credits,
+        grades: classItem.grades,
+        points: db.grades.filter(gradesItem => gradesItem.name === classItem.grades)[0].points,
+        checked: false
+    }))
+}))
+
 const MyPointsAPI = {
     // fetchDB: () => fetch(`${baseUrl}/fetchDB`).then(response => response.json())
-    fetchDB: () => new Promise((resove, reject) => resove(db))
+    fetchDB: () => (new Promise((resove) => resove(db)))
 }
 
 export default MyPointsAPI
