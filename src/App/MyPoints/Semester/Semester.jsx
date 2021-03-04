@@ -4,12 +4,14 @@ import ClassItem from './ClassItem/ClassItem.jsx'
 
 export default function Semester(props) {
   return (
-    <div className="semester">
-      <div className="title-bar">
+    <article className="semester">
+      <header className="title-bar">
         <h2>{props.semesterName}</h2>
-        <button onClick={() => props.selectSemester(props.semesterID)}>勾选学期</button>
-        <button onClick={() => props.onlySelectSemester(props.semesterID)}>仅本学期</button>
-      </div>
+        <button className="ms-button"
+          onClick={() => props.selectSemester(props.semesterID)}>勾选学期</button>
+        <button className="ms-button primary"
+          onClick={() => props.onlySelectSemester(props.semesterID)}>仅本学期</button>
+      </header>
       <div className="class-list-head">
         <span className="name-field">课程</span>
         <span className="credits-field">学分</span>
@@ -17,20 +19,19 @@ export default function Semester(props) {
         <span className="points-field">绩点</span>
         <span className="checked-field">勾选</span>
       </div>
-      {props.classes.sort((a, b) => b.points - a.points === 0 ? b.credits - a.credits : b.points - a.points)
-        .map(item =>
-          <ClassItem
-            key={item.name}
-            name={item.name}
-            credits={item.credits}
-            grades={item.grades}
-            points={item.points}
-            checked={item.checked}
-            gradesList={props.gradesList}
-            setGrades={props.setGrades}
-            checkClassItem={props.checkClassItem} />
-        )
+      {props.classes.map(item =>
+        <ClassItem
+          key={item.name}
+          name={item.name}
+          credits={item.credits}
+          grades={item.grades}
+          points={item.points}
+          checked={item.checked}
+          gradesList={props.gradesList}
+          setGrades={props.setGrades}
+          checkClassItem={props.checkClassItem} />
+      )
       }
-    </div>
+    </article>
   )
 }

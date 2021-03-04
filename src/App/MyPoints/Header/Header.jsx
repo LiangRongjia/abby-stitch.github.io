@@ -10,14 +10,13 @@ import './Header.css';
  */
 export default function Header(props) {
   return (
-    <header>
+    <header className="header">
       <img className="avatar" src="./favicon.ico" />
-      <span></span>
       <h1>少爷的绩点</h1>
-      <span className="avg-points">平均绩点：{props.avgPoints}</span>
-      <button onClick={props.reload}>刷新</button>
-      <button onClick={props.selectAll}>全部勾选</button>
-      <button onClick={props.selectNone}>全部清除</button>
+      <p className="avg-points">平均绩点：{props.avgPoints}</p>
+      <button className="ms-button" onClick={props.reload}>刷新</button>
+      <button className="ms-button" onClick={props.selectNone}>全部清除</button>
+      <button className="ms-button primary" onClick={props.selectAll}>全部勾选</button>
     </header>
   )
 }

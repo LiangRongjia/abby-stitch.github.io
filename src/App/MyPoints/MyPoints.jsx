@@ -91,16 +91,17 @@ export default function MyPoints() {
   if (classesState === defaultClassesState) {
     MyPointsAPI.fetchDB().then(newData => {
       setData(newData)
-      setClassesState(newData.classes.map(item => ({
-        ...item,
-        points: getPoints(item.grades),
-        checked: true
-      })))
+      setClassesState(
+        newData.classes.map(item => ({
+          ...item,
+          points: getPoints(item.grades),
+          checked: true
+        })).sort((a, b) => b.points - a.points === 0 ? b.credits - a.credits : b.points - a.points))
     })
   }
 
   return (
-    <div className='my-points'>
+    <main className='my-points'>
       <Header
         avgPoints={avgPointsState}
         reload={reload}
@@ -118,6 +119,6 @@ export default function MyPoints() {
           onlySelectSemester={onlySelectSemester}
           checkClassItem={checkClassItem} />
       ).reverse()}
-    </div>
+    </main>
   )
 }

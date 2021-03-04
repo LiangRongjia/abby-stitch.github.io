@@ -16,3 +16,45 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+
+/* copy from Microsoft Edge */
+
+.ms-button.primary {
+    color: #FFFFFF;
+    background-color: #0078D4;
+}
+
+.ms-button.primary:hover {
+    background-color: #006CBE
+}
+
+.ms-button {
+    /* copy from microsoft edge */
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    max-width: 374px;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+    line-height: 1;
+    font-family: inherit;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    min-width: 32px;
+    padding: 0 8px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    color: #262626;
+    fill: #262626;
+    background: #E5E5E5;
+}
+
+.ms-button:hover {
+    /* copy from microsoft edge */
+    background: #DDDDDD;
+}

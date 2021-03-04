@@ -12,7 +12,6 @@ export default function ButtonAppBar() {
 
   return (
     <div ref={appRef} className='app'>
-      <div className='menu-button'>菜单</div>
       <MyPoints />
     </div>
   );
