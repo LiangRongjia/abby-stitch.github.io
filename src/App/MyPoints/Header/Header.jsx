@@ -12,8 +12,8 @@ Header.propTypes = {
 Header.defaultProps = {
   avgPoints: 0,
   reload: () => { },
-  selectNone: () => { },
-  selectAll: () => { }
+  checkNone: () => { },
+  checkAll: () => { }
 }
 
 export default function Header(props) {
@@ -23,8 +23,8 @@ export default function Header(props) {
       <h1>少爷的绩点</h1>
       <p className="avg-points">平均绩点：{props.avgPoints.toFixed(2)}</p>
       <button className="ms-button" onClick={props.reload}>刷新</button>
-      <button className="ms-button" onClick={props.selectNone}>全部清除</button>
-      <button className="ms-button primary" onClick={props.selectAll}>全部勾选</button>
+      <button className="ms-button" onClick={props.checkNone}>全部清除</button>
+      <button className="ms-button primary" onClick={props.checkAll}>全部勾选</button>
     </header>
   )
 }

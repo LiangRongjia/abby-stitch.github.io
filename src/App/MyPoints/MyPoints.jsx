@@ -24,6 +24,7 @@ const getPoints = (gradesName, grades) => grades.filter((item) => item.name === 
 const getClasses = (semesterID, classes) => classes.filter(classItem => classItem.semester === semesterID) || defaultClassesState
 
 export default function MyPoints() {
+  const [firstLoad, setFirstLoad] = useState(true)
   /* 存储 fetch 数据 */
   const [data, setData] = useState(defaultData)
   /* 用 hook 存储组件的 state */
@@ -45,62 +46,78 @@ export default function MyPoints() {
   /**
    * 勾选全部 classItem
    */
-  const checkAll = () => setClassesState(classesState.map(classItem => ({
-    ...classItem,
-    checked: true
-  })))
+  const checkAll = () => setClassesState(
+    classesState
+      .map(classItem => ({
+        ...classItem,
+        checked: true
+      })))
   /**
    * 取消全部的 classItem 勾选
    */
-  const checkNone = () => setClassesState(classesState.map(classItem => ({
-    ...classItem,
-    checked: false
-  })))
+  const checkNone = () => setClassesState(
+    classesState
+      .map(classItem => ({
+        ...classItem,
+        checked: false
+      })))
   /**
    * 勾选某 semester 的全部 classItem
    * @param { number } semesterID 
    */
-  const selectSemester = (semesterID) => setClassesState(classesState.map(classItem => ({
-    ...classItem,
-    checked: classItem.semester === semesterID || classItem.checked
-  })))
+  const selectSemester = (semesterID) => setClassesState(
+    classesState
+      .map(classItem => ({
+        ...classItem,
+        checked: classItem.semester === semesterID || classItem.checked
+      })))
   /**
    * 仅勾选某 semester 的全部 classItem，其他 semester 的取消勾选
    * @param { number } semesterID 
    */
-  const onlySelectSemester = (semesterID) => setClassesState(classesState.map(classItem => ({
-    ...classItem,
-    checked: classItem.semester === semesterID
-  })))
+  const onlySelectSemester = (semesterID) => setClassesState(
+    classesState
+      .map(classItem => ({
+        ...classItem,
+        checked: classItem.semester === semesterID
+      })))
   /**
    * 勾选某 classItem
    * @param { string } name 
    */
-  const checkClassItem = name => setClassesState(classesState.map(classItem => classItem.name === name ? {
-    ...classItem,
-    checked: !classItem.checked
-  } : classItem))
+  const checkClassItem = name => setClassesState(
+    classesState
+      .map(classItem => classItem.name === name ? {
+        ...classItem,
+        checked: !classItem.checked
+      } : classItem))
   /**
    * 设置某 classItem 的 grades
    * @param { string } name 
    * @param { string } newGrades 
    */
-  const setGrades = (name, newGrades) => setClassesState(classesState.map(classItem => classItem.name === name ? {
-    ...classItem,
-    grades: newGrades,
-    points: getPoints(newGrades, data.grades)
-  } : classItem))
+  const setGrades = (name, newGrades) => setClassesState(
+    classesState
+      .map(classItem => classItem.name === name ? {
+        ...classItem,
+        grades: newGrades,
+        points: getPoints(newGrades, data.grades)
+      } : classItem))
 
-  if (classesState === defaultClassesState) {
-    MyPointsAPI.fetchDB().then(newData => {
-      setData(newData)
-      setClassesState(
-        newData.classes.map(item => ({
-          ...item,
-          points: getPoints(item.grades, data.grades),
-          checked: true
-        })).sort((a, b) => b.points - a.points === 0 ? b.credits - a.credits : b.points - a.points))
-    })
+  if (firstLoad === true) {
+    setFirstLoad(false)
+    MyPointsAPI.fetchDB()
+      .then(newData => {
+        setData(newData)
+        setClassesState(
+          JSON.parse(JSON.stringify(newData.classes))
+            .map(item => ({
+              ...item,
+              points: getPoints(item.grades, newData.grades),
+              checked: true
+            }))
+        )
+      })
   }
 
   return (
@@ -115,7 +132,7 @@ export default function MyPoints() {
           key={semester.ID}
           semesterID={semester.ID}
           semesterName={semester.name}
-          classes={getClasses(semester.ID, classesState)}
+          classes={getClasses(semester.ID, classesState).sort((a, b) => b.points - a.points === 0 ? b.credits - a.credits : b.points - a.points)}
           gradesList={data.grades.map(item => item.name)}
           setGrades={setGrades}
           selectSemester={selectSemester}
