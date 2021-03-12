@@ -1,7 +1,13 @@
-import React from 'react'
 import './Header.css'
 
-export default function Header({ avgPoints, reload, checkNone, checkAll }: { avgPoints: number, reload: () => void, checkNone: () => void, checkAll: () => void }) {
+interface HeaderProps {
+  avgPoints: number,
+  reload: () => void,
+  checkNone: () => void,
+  checkAll: () => void
+}
+
+export default function Header({ avgPoints, reload, checkNone, checkAll }: HeaderProps) {
   return (
     <header className="header">
       <img className="avatar" alt="avatar" src="./favicon.ico" />

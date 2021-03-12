@@ -1,6 +1,17 @@
 import React from 'react'
 import './ClassItem.css'
 
+interface ClassItemProps {
+  name: string,
+  credits: number,
+  grades: string,
+  points: number,
+  checked: boolean,
+  gradesList: string[],
+  setGrades: (name: string, newGrades: string) => void,
+  checkClassItem: (name: string) => void
+}
+
 export default function ClassItem({
   name,
   credits,
@@ -10,17 +21,7 @@ export default function ClassItem({
   gradesList,
   setGrades,
   checkClassItem
-}: {
-  name: string,
-  credits: number,
-  grades: string,
-  points: number,
-  checked: boolean,
-  gradesList: string[],
-  setGrades: (name: string, newGrades: string) => void,
-  checkClassItem: (name: string) => void
-
-}) {
+}: ClassItemProps) {
   const selectRef = React.createRef<HTMLSelectElement>()
   return (
     <li className="class-list-item">

@@ -1,41 +1,35 @@
-import React from 'react'
 import './Semester.css'
 import ClassItem from './ClassItem/ClassItem'
+import { ClassItemStateType } from '../MyPoints'
 
+interface SemesterProps {
+  semesterID: string,
+  semesterName: string,
+  classes: ClassItemStateType[],
+  gradesList: string[],
+  setGrades: (name: string, newGrades: string) => void,
+  checkSemester: (semesterID: string) => void,
+  onlyCheckSemester: (semesterID: string) => void,
+  checkClassItem: (name: string) => void
+}
 export default function Semester({
   semesterID,
   semesterName,
   classes,
   gradesList,
   setGrades,
-  selectSemester,
-  onlySelectSemester,
+  checkSemester,
+  onlyCheckSemester,
   checkClassItem
-}: {
-  semesterID: string,
-  semesterName: string,
-  classes: {
-    semester: string;
-    grades: string;
-    credits: number;
-    name: string;
-    points: number;
-    checked: boolean;
-  }[],
-  gradesList: string[],
-  setGrades: (name: string, newGrades: string) => void,
-  selectSemester: (semesterID: string) => void,
-  onlySelectSemester: (semesterID: string) => void,
-  checkClassItem: (name: string) => void
-}) {
+}: SemesterProps) {
   return (
     <article className="semester">
       <header className="title-bar">
         <h2>{semesterName}</h2>
         <button className="ms-button"
-          onClick={() => selectSemester(semesterID)}>勾选学期</button>
+          onClick={() => checkSemester(semesterID)}>勾选学期</button>
         <button className="ms-button primary"
-          onClick={() => onlySelectSemester(semesterID)}>仅本学期</button>
+          onClick={() => onlyCheckSemester(semesterID)}>仅本学期</button>
       </header>
       <div className="class-list-head">
         <span className="name-field">课程</span>
