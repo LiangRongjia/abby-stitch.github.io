@@ -1,0 +1,44 @@
+{
+    "short_name": "Abby's",
+    "name": "Abby's Homepage",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#f7f7f7",
+    "background_color": "#ffffff",
+    "icons": [{
+            "src": "favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "icon/android-launchericon-48-48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "icon/android-launchericon-72-72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "icon/android-launchericon-96-96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "icon/android-launchericon-144-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "icon/android-launchericon-192-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icon/android-launchericon-512-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
