@@ -1,40 +1,47 @@
 .header {
-    position: fixed;
+    position: sticky;
+    position: -webkit-sticky;
     top: 0px;
-    left: 0px;
     display: flex;
-    padding: 0px 70px;
-    width: stretch;
-    min-width: 720px;
-    height: 54px;
     align-items: center;
+    min-width: max-content;
+    height: 54px;
     background-color: rgba(255, 255, 255);
     color: black;
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
 }
+.header-container{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 70px;
+    width: stretch;
+    max-width: 1000px;
+    min-width: 720px;
+}
 
-.header>.avatar {
+.header-container>.avatar {
     border-radius: 16px;
     height: 32px;
     width: 32px;
 }
 
-.header>h1 {
+.header-container>h1 {
     display: flex;
     font-size: 18px;
     font-weight: 600;
 }
 
-.header>h1::before {
+.header-container>h1::before {
     content: " ";
     height: 24px;
     margin: 0px 20px;
     border-left: 2px solid #000;
 }
 
-.header>.avg-points {
+.header-container>.avg-points {
     display: flex;
     flex-grow: 1;
     margin-left: 20px;
@@ -43,6 +50,6 @@
     font-weight: normal;
 }
 
-.header>button {
+.header-container>button {
     margin-left: 16px;
 }
