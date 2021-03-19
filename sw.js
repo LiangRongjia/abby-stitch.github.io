@@ -1,4 +1,4 @@
-const swVersion = "abby's v15"
+const swVersion = "abby's v16"
 const cacheName = swVersion
 const contentToCacheWhenInstall = []
 const cacheWhitelist = [cacheName]
